@@ -10,7 +10,6 @@
 An example of code snippet that solves the modulo 2 equations of the parity check of the [7,4,3] code (Hamming code).
 
 ```python
-import json
 import numpy as np
 from grover_algorithm import GroverParityCheckSolver
 
