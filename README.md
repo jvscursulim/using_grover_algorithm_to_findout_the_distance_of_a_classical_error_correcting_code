@@ -1,4 +1,4 @@
-# Using Grover's algorithm to find out the distance and the code words of a classical error correcting code
+# Using Grover's algorithm to find out the distance and the codewords of a classical error correcting code
 
 ## Description
 
