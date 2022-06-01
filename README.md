@@ -20,8 +20,6 @@ gpcs = GroverParityCheckSolver(parity_check_matrix = matrix_H)
 
 code = gpcs.get_classical_error_correction_code()
 
-code_string = None
-
 print(code)
 ```
 
