@@ -13,7 +13,7 @@ class GroverParityCheckSolver:
             parity_check_matrix (ndarray): The input matrix.  
 
         Raises:
-            TypeError: If the input is not a matrix.
+            TypeError: If the input is not a ndarray.
         """
         if isinstance(parity_check_matrix, ndarray):
             
@@ -21,7 +21,7 @@ class GroverParityCheckSolver:
             self.qc = None
         else:
             
-            raise TypeError("The input is not a matrix!")
+            raise TypeError("The input is not a ndarray")
         
     def initialize_qubits(self) -> None:
         """Initilizes the qubits and creates the quantum circuit that will be
@@ -83,7 +83,13 @@ class GroverParityCheckSolver:
         """
         self.initialize_qubits()
         
-        for _ in range(int(np.round(self.parity_check_matrix.shape[1]/(2**self.parity_check_matrix.shape[0])))):
+        iterations = int(np.round(np.sqrt(2**self.parity_check_matrix.shape[0]/2**self.parity_check_matrix.shape[1])))
+        
+        if iterations == 0:
+            
+            iterations = 1
+            
+        for _ in range(iterations):
             
             self.mod2_equations()
             self.oracle()
@@ -103,7 +109,6 @@ class GroverParityCheckSolver:
         Returns:
             dict: A dictionary with the code words and the code distance.
         """
-        report = {}
         code_words_list = []
         statevector = Statevector(self.quantum_circuit())
         max_prob = max(statevector.probabilities_dict().values())
@@ -117,7 +122,7 @@ class GroverParityCheckSolver:
         code_distance = min([code_word.count('1') for code_word in code_words_list if code_word != '0'*self.parity_check_matrix.shape[1]])
         
         code_string = f"[{self.parity_check_matrix.shape[1]},{self.parity_check_matrix.shape[1]-self.parity_check_matrix.shape[0]},{code_distance}]"
-        report[code_string] = {"code_distance": code_distance, "code_words": code_words_list}
+        code_dict = {"code": code_string, "n": self.parity_check_matrix.shape[1], "k": self.parity_check_matrix.shape[1]-self.parity_check_matrix.shape[0], "d": code_distance, "codewords": code_words_list}
         
-        return report
+        return code_dict
         

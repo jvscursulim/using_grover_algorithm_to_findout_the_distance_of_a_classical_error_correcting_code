@@ -11,10 +11,8 @@ gpcs = GroverParityCheckSolver(parity_check_matrix = matrix_H)
 code = gpcs.get_classical_error_correction_code()
 
 code_string = None
-
-for key, _ in code.items():
     
-    code_string = key
+code_string = code["code"]
 
 with open(f"result\code_{code_string}.json", "w") as file:
     
