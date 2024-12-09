@@ -1,4 +1,8 @@
 import json
+import os
+import sys
+
+sys.path.append("../")
 
 import numpy as np
 
@@ -15,7 +19,8 @@ codewords, distance = gpcs.find_codewords_and_code_distance(parity_check_matrix=
 code_string = f"[{matrix_H.shape[1]}, {matrix_H.shape[1]-matrix_H.shape[0]}, {distance}]"
 dict_code = {"code": code_string, "codewords": codewords}
 
-with open(f"result\code_{code_string}.json", "w") as file:
+os.makedirs(name="result", exist_ok=True)
+with open(f"result/code_{code_string}.json", "w") as file:
     
     json.dump(dict_code, file)
     file.close()

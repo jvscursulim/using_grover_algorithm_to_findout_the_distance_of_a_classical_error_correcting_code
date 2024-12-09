@@ -5,13 +5,14 @@ name = "pypi"
 
 [packages]
 numpy = "*"
-jupyter = "*"
+ipykernel = "*"
 qiskit = "*"
 pylatexenc = "*"
 matplotlib = "*"
-qiskit-aer = "*"
+qiskit-aer-gpu = "*"
 
 [dev-packages]
+black = "*"
 
 [requires]
 python_version = "3.9"
