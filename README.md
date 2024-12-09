@@ -1,5 +1,7 @@
 # Using Grover's algorithm to find out the distance and the codewords of a classical error correcting code
 
+[![black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
 ## Description
 
 In classical error correction, we can find out the codewords of a code solving a system of modulo 2 equations and with the codewords we can calculate the distance of the code. This problem is a NP-hard problem and there are some studies where the authors try to propose algorithms that can solve this problem in an optimized way. Here we use a quantum approach, based on Grover's algorithm, to find out the codewords and the code distance.
@@ -25,4 +27,4 @@ print(distance)
 
 Quantum circuit to solve the modulo 2 equations of the parity check matrix of the [7,4,3] code (Hamming code).
 
-![image](example_743.png)
+![image](/figures/example_743.png)
